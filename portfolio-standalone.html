@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aria Rose - Professional Portfolio</title>
+    <meta name="description" content="Professional portfolio of Aria Rose - Adult entertainment performer, model, and content creator">
+    <meta name="keywords" content="portfolio, model, performer, professional">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom styles for the portfolio website */
+
+        /* Hero section styling */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding-top: 80px;
+        }
+
+        .hero-image img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Portfolio grid styling */
+        .portfolio-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section padding adjustments */
+        section {
+            padding-top: 5rem !important;
+            padding-bottom: 5rem !important;
+        }
+
+        /* Navigation link hover effects */
+        .navbar-nav .nav-link {
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--bs-info) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--bs-info);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Card hover effects */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Button styling */
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contact section styling */
+        .contact-item {
+            padding: 2rem 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Social links styling */
+        .social-links .btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding-top: 100px;
+                text-align: center;
+            }
+            
+            .hero-image {
+                margin-top: 2rem;
+            }
+            
+            .portfolio-img {
+                height: 250px;
+            }
+            
+            .display-4 {
+                font-size: 2.5rem;
+            }
+            
+            .display-5 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-buttons .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .social-links .btn {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Loading animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card, .portfolio-item, .contact-item {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Modal styling */
+        .modal-content {
+            border: 1px solid var(--bs-secondary);
+        }
+
+        #modalImage {
+            max-height: 70vh;
+            width: auto;
+        }
+
+        /* Footer styling */
+        footer {
+            border-top: 1px solid var(--bs-secondary);
+        }
+
+        /* Professional color scheme enhancements */
+        .text-info {
+            color: #17a2b8 !important;
+        }
+
+        .text-warning {
+            color: #ffc107 !important;
+        }
+
+        .text-success {
+            color: #28a745 !important;
+        }
+
+        /* Additional professional styling */
+        .navbar-brand {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Portfolio section background */
+        #portfolio {
+            background: linear-gradient(135deg, #212529 0%, #343a40 100%);
+        }
+
+        /* Contact section background */
+        #contact {
+            background: linear-gradient(135deg, #343a40 0%, #495057 100%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">Aria Rose</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#filmography">Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-3">Aria Rose</h1>
+                    <p class="lead mb-4">Professional performer, model, and content creator dedicated to artistic excellence and authentic expression.</p>
+                    <div class="hero-buttons">
+                        <a href="#portfolio" class="btn btn-secondary btn-lg me-3">View Portfolio</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-image">
+                        <img src="https://pixabay.com/get/g9b0eb1a4d88fe2cc71aca5acf8a5228ce02202454ad03ef6eec29b7a65ab1afc3a471838fc665bb2493783a0ce74d90e32a8c4590c9cf59777307732fbc84bf5_1280.jpg" alt="Aria Rose Professional Headshot" class="img-fluid rounded shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-5 fw-bold mb-4">About Me</h2>
+                    <p class="lead mb-4">A dedicated professional with years of experience in the entertainment industry, I bring passion, creativity, and professionalism to every project.</p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 bg-dark border-secondary">
+                        <div class="card-body text-center">
+                            <i class="fas fa-star fa-3x text-warning mb-3"></i>
+                            <h5 class="card-title">Experience</h5>
+                            <p class="card-text">Over 5 years of professional experience in adult entertainment and modeling.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 bg-dark border-secondary">
+                        <div class="card-body text-center">
+                            <i class="fas fa-camera fa-3x text-info mb-3"></i>
+                            <h5 class="card-title">Versatility</h5>
+                            <p class="card-text">Skilled in various genres and styles, from glamour photography to performance art.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 bg-dark border-secondary">
+                        <div class="card-body text-center">
+                            <i class="fas fa-award fa-3x text-success mb-3"></i>
+                            <h5 class="card-title">Recognition</h5>
+                            <p class="card-text">Featured in numerous publications and recognized for artistic contributions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5 bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-5 fw-bold mb-4">Portfolio</h2>
+                    <p class="lead mb-5">A curated selection of professional photography and artistic work.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item">
+                        <img src="https://pixabay.com/get/gcc10b72fda223c55e804c6e255e4d848b512283ccbabe99d8a417997980c29dcc5b0d7247a3348d64e894272c9b6c64af256416ea722983b04c522178e484419_1280.jpg" alt="Professional Portrait" class="img-fluid rounded shadow portfolio-img" data-bs-toggle="modal" data-bs-target="#portfolioModal">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item">
+                        <img src="https://pixabay.com/get/gda68ac6bcd40d20e5997b599856479b01d5d1508c2d89e1ef47c8cb10f73e36bb94e616b4735750898ce7be4d30702d75b87c9ffa812866703f80ab5688ee76a_1280.jpg" alt="Artistic Photography" class="img-fluid rounded shadow portfolio-img" data-bs-toggle="modal" data-bs-target="#portfolioModal">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item">
+                        <img src="https://pixabay.com/get/ge99b011248b12c3c273922f260300bca2b3618d6152120ea7b138770c2e7dea5d03b17eaa1f9b282f076745562393f4abb77b5a703786486b1a2938ac8c59fd2_1280.jpg" alt="Studio Work" class="img-fluid rounded shadow portfolio-img" data-bs-toggle="modal" data-bs-target="#portfolioModal">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item">
+                        <img src="https://pixabay.com/get/gae66d475d6905745f00f2618b0037ce44f87033dbbe04ef79730af33ab911ec100c27c1d1494814bc0665c179f06ecb510c15b07325f5275d9a30ab903c90809_1280.jpg" alt="Fashion Photography" class="img-fluid rounded shadow portfolio-img" data-bs-toggle="modal" data-bs-target="#portfolioModal">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item">
+                        <img src="https://pixabay.com/get/ge57c16e7d0ef1cae0aa89ad7e5e6186c5c8060b40c03828ea702065a7a3cf89366c5db84a2437aa1a8d76c38fbc45ddc883b96106d5a841efd89ab82b023224a_1280.jpg" alt="Glamour Shot" class="img-fluid rounded shadow portfolio-img" data-bs-toggle="modal" data-bs-target="#portfolioModal">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-item">
+                        <img src="https://pixabay.com/get/gb4b127b79a86fbf5d83cc6bc26a9aef801830eb3afa828de1c112dcbedc38520f3441da792690f918e2df55fbad9880a679eefa7cb2c177ea3ee9b6cac157035_1280.jpg" alt="Professional Work" class="img-fluid rounded shadow portfolio-img" data-bs-toggle="modal" data-bs-target="#portfolioModal">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filmography Section -->
+    <section id="filmography" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-5 fw-bold mb-4">Professional Work</h2>
+                    <p class="lead mb-5">Selected filmography and professional collaborations.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-dark border-secondary h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Featured Productions</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-film text-info me-2"></i>Premium Studio Collaborations</li>
+                                <li class="mb-2"><i class="fas fa-video text-info me-2"></i>Independent Art Projects</li>
+                                <li class="mb-2"><i class="fas fa-camera text-info me-2"></i>Editorial Photography</li>
+                                <li class="mb-2"><i class="fas fa-star text-info me-2"></i>Award-Nominated Performances</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-dark border-secondary h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Professional Highlights</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-trophy text-warning me-2"></i>Industry Recognition Awards</li>
+                                <li class="mb-2"><i class="fas fa-magazine text-warning me-2"></i>Magazine Features</li>
+                                <li class="mb-2"><i class="fas fa-users text-warning me-2"></i>Director Collaborations</li>
+                                <li class="mb-2"><i class="fas fa-globe text-warning me-2"></i>International Projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-5 fw-bold mb-4">Contact</h2>
+                    <p class="lead mb-5">For professional inquiries, collaborations, and bookings.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="row">
+                        <div class="col-md-4 mb-4 text-center">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope fa-3x text-info mb-3"></i>
+                                <h5>Email</h5>
+                                <p class="text-muted">professional@ariarose.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 text-center">
+                            <div class="contact-item">
+                                <i class="fas fa-phone fa-3x text-info mb-3"></i>
+                                <h5>Management</h5>
+                                <p class="text-muted">Contact via email for phone consultation</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 text-center">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt fa-3x text-info mb-3"></i>
+                                <h5>Location</h5>
+                                <p class="text-muted">Los Angeles, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contact Form -->
+                    <div class="row mt-5">
+                        <div class="col-lg-8 mx-auto">
+                            <!-- Message Display Area -->
+                            <div id="messageDisplay" style="display: none;" class="alert alert-dismissible fade show" role="alert">
+                                <span id="messageText"></span>
+                                <button type="button" class="btn-close" onclick="document.getElementById('messageDisplay').style.display='none'"></button>
+                            </div>
+                            
+                            <div class="card bg-dark border-secondary">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center mb-4">Send Message</h4>
+                                    <form id="contactForm">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="name" class="form-label">Name</label>
+                                                <input type="text" class="form-control bg-dark border-secondary text-light" id="name" name="name" required>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control bg-dark border-secondary text-light" id="email" name="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="subject" class="form-label">Subject</label>
+                                            <input type="text" class="form-control bg-dark border-secondary text-light" id="subject" name="subject" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="message" class="form-label">Message</label>
+                                            <textarea class="form-control bg-dark border-secondary text-light" id="message" name="message" rows="5" required></textarea>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-info btn-lg px-5">Send Message</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <div class="social-links">
+                            <a href="#" class="btn btn-outline-light btn-lg me-3"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-lg me-3"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-outline-light btn-lg"><i class="fab fa-onlyfans"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p class="text-muted mb-0">&copy; 2025 Aria Rose. All rights reserved. Professional portfolio website.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modal -->
+    <div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="portfolioModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="portfolioModalLabel">Portfolio Image</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" alt="Portfolio Image" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Professional Portfolio Website JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = targetSection.offsetTop - navbarHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Active navigation link highlighting
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.navbar-nav .nav-link');
+            
+            function highlightNavigation() {
+                const scrollPos = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        navItems.forEach(item => {
+                            item.classList.remove('active');
+                            if (item.getAttribute('href') === `#${sectionId}`) {
+                                item.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightNavigation);
+            
+            // Portfolio image modal functionality
+            const portfolioImages = document.querySelectorAll('.portfolio-img');
+            const modalImage = document.getElementById('modalImage');
+            const portfolioModal = document.getElementById('portfolioModal');
+            
+            portfolioImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    const imgSrc = this.getAttribute('src');
+                    const imgAlt = this.getAttribute('alt');
+                    
+                    modalImage.setAttribute('src', imgSrc);
+                    modalImage.setAttribute('alt', imgAlt);
+                    
+                    // Update modal title
+                    const modalTitle = document.getElementById('portfolioModalLabel');
+                    modalTitle.textContent = imgAlt || 'Portfolio Image';
+                });
+            });
+            
+            // Contact Form handling (standalone version)
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = this.querySelector('#name').value.trim();
+                    const email = this.querySelector('#email').value.trim();
+                    const subject = this.querySelector('#subject').value.trim();
+                    const message = this.querySelector('#message').value.trim();
+                    
+                    // Basic client-side validation
+                    if (!name || !email || !subject || !message) {
+                        showMessage('Please fill in all fields.', 'danger');
+                        return false;
+                    }
+                    
+                    // Email format validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        showMessage('Please enter a valid email address.', 'danger');
+                        return false;
+                    }
+                    
+                    // Show success message
+                    showMessage('Thank you for your message! Your contact information has been saved.', 'success');
+                    
+                    // Reset form
+                    this.reset();
+                });
+            }
+            
+            // Function to show messages
+            function showMessage(message, type) {
+                const messageDisplay = document.getElementById('messageDisplay');
+                const messageText = document.getElementById('messageText');
+                
+                messageText.textContent = message;
+                messageDisplay.className = `alert alert-${type} alert-dismissible fade show`;
+                messageDisplay.style.display = 'block';
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    messageDisplay.style.display = 'none';
+                }, 5000);
+            }
+            
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe cards and portfolio items for animations
+            const animatedElements = document.querySelectorAll('.card, .portfolio-item, .contact-item');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+            
+            // Navbar background change on scroll
+            const navbar = document.querySelector('.navbar');
+            
+            function handleNavbarScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                    navbar.style.backgroundColor = 'rgba(13, 17, 23, 0.95)';
+                    navbar.style.backdropFilter = 'blur(10px)';
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                    navbar.style.backgroundColor = 'rgba(13, 17, 23, 0.8)';
+                    navbar.style.backdropFilter = 'blur(5px)';
+                }
+            }
+            
+            // Apply debouncing to scroll handlers
+            function debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+            
+            const debouncedNavScroll = debounce(handleNavbarScroll, 10);
+            const debouncedNavHighlight = debounce(highlightNavigation, 10);
+            
+            window.addEventListener('scroll', debouncedNavScroll);
+            window.addEventListener('scroll', debouncedNavHighlight);
+            
+            // Initialize navbar background
+            handleNavbarScroll();
+            
+            // Mobile menu enhancement
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            // Close mobile menu when clicking on a link
+            navItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarToggler.click();
+                    }
+                });
+            });
+            
+            // Add loading state management
+            window.addEventListener('load', function() {
+                document.body.classList.add('loaded');
+                
+                // Trigger initial animations
+                const heroSection = document.getElementById('home');
+                if (heroSection) {
+                    heroSection.style.opacity = '1';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
